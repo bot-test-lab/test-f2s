@@ -81,15 +81,7 @@ async def convert_to_video(bot, update):
             if metadata.has("duration"):
                 duration = metadata.get('duration').seconds
             thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
-            if not os.path.exists(thumb_image_path):
-                thumb_image_path = await take_screen_shot(
-                    the_real_download_location,
-                    os.path.dirname(the_real_download_location),
-                    random.randint(
-                        0,
-                        duration - 1
-                    )
-                )
+              
             logger.info(thumb_image_path)
             # 'thumb_image_path' will be available now
             metadata = extractMetadata(createParser(thumb_image_path))
